@@ -1,0 +1,535 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+body {
+    background: #f4f6fb;
+    color: #333;
+}
+
+/* Header */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 40px;
+    background: #e9edf5;
+}
+
+.header h1 {
+    font-size: 22px;
+    color: #4a5a75;
+}
+
+.user {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.logout {
+    background: #e57373;
+    border: none;
+    padding: 8px 15px;
+    color: white;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+/* Layout */
+.container {
+    padding: 40px;
+}
+
+.container h2 {
+    margin-bottom: 25px;
+    color: #4a5a75;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 25px;
+}
+
+/* Cards */
+.card {
+    background: white;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+}
+
+.card.full {
+    grid-column: span 2;
+    text-align: center;
+}
+
+.card h3 {
+    margin-bottom: 15px;
+    color: #4a5a75;
+}
+
+/* Inputs */
+label {
+    display: block;
+    margin: 10px 0 5px;
+    font-size: 14px;
+}
+
+input, select, textarea {
+    width: 100%;
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+}
+
+textarea {
+    resize: none;
+    height: 80px;
+}
+
+/* Buttons */
+.primary {
+    margin-top: 15px;
+    width: 100%;
+    padding: 12px;
+    border: none;
+    background: #5c7cfa;
+    color: white;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.view {
+    background: #6c8cd5;
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.icon {
+    background: #e9edf5;
+    border: none;
+    padding: 6px 10px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.cancel-btn {
+    background: #ffebee;
+    color: #c62828;
+    border: 1px solid #ffcdd2;
+}
+
+.cancel-btn:hover {
+    background: #ffcdd2;
+}
+
+/* Table */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+th {
+    text-align: left;
+    padding: 10px;
+    background: #eef1f7;
+}
+
+td {
+    padding: 12px 10px;
+    border-bottom: 1px solid #eee;
+}
+
+/* Status */
+.status {
+    padding: 5px 10px;
+    border-radius: 10px;
+    font-size: 13px;
+}
+
+.confirmada {
+    background: #c8f2d1;
+    color: #2e7d32;
+}
+
+.completada,
+.completa {
+    background: #c8f2d1;
+    color: #2e7d32;
+}
+
+.pendiente {
+    background: #ffe7b3;
+    color: #996c00;
+}
+
+/* Modal */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0,0.4);
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 3% auto;
+    padding: 15px;
+    border: 1px solid #888;
+    width: 90%;
+    max-width: 1200px;
+    border-radius: 8px;
+}
+
+.history-container {
+    max-height: 380px;
+    overflow-x: auto;
+    margin-top: 15px;
+}
+
+.history-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.history-table th,
+.history-table td {
+    padding: 10px;
+    border: 1px solid #ddd;
+    text-align: left;
+    vertical-align: top;
+}
+
+.history-table th {
+    background: #f4f6fb;
+    color: #333;
+}
+
+.history-table tbody tr:nth-child(even) {
+    background: #fafafa;
+}
+
+#historialEmpty {
+    display: none;
+    margin-top: 10px;
+    color: #555;
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* Date Picker Panel */
+.date-picker-container {
+    position: relative;
+}
+
+.date-picker-container input[type="text"] {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    background: white;
+}
+
+.date-picker-container input[type="text"]:focus {
+    border-color: #4a5a75;
+    outline: none;
+}
+
+.date-panel {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: white;
+    border: 2px solid #4a5a75;
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+    z-index: 1000;
+    max-height: 400px;
+    overflow-y: auto;
+}
+
+.date-panel-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    background: #4a5a75;
+    color: white;
+    border-radius: 6px 6px 0 0;
+}
+
+.date-panel-header h4 {
+    margin: 0;
+    font-size: 18px;
+}
+
+.date-panel-header button {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 24px;
+    cursor: pointer;
+    padding: 0;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.date-options {
+    padding: 10px;
+}
+
+.date-option {
+    display: block;
+    width: 100%;
+    padding: 15px;
+    margin-bottom: 8px;
+    border: 2px solid #e9edf5;
+    border-radius: 8px;
+    background: #f8f9fa;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-align: center;
+}
+
+.date-option:hover {
+    border-color: #4a5a75;
+    background: #e9edf5;
+}
+
+.date-option.selected {
+    border-color: #4a5a75;
+    background: #4a5a75;
+    color: white;
+}
+
+.priority-slot {
+    border-color: #bfd9c8;
+    background: #edf8f1;
+}
+
+.priority-slot:hover {
+    border-color: #2e7d32;
+    background: #daf0e1;
+}
+
+.other-slot {
+    border-color: #d8deeb;
+    background: #f6f8fc;
+}
+
+.other-slot:hover {
+    border-color: #5c6f91;
+    background: #e9edf5;
+}
+
+.availability-legend {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin: 8px 0 14px;
+}
+
+.legend-pill {
+    display: inline-flex;
+    align-items: center;
+    padding: 6px 10px;
+    border-radius: 999px;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.legend-priority {
+    background: #edf8f1;
+    color: #256c2a;
+    border: 1px solid #bfd9c8;
+}
+
+.legend-other {
+    background: #f6f8fc;
+    color: #4a5a75;
+    border: 1px solid #d8deeb;
+}
+
+.date-option .dia-semana {
+    font-weight: bold;
+    font-size: 16px;
+    margin-bottom: 5px;
+}
+
+.date-option .dia-mes {
+    font-size: 14px;
+    opacity: 0.8;
+}
+
+/* History Modal Styles */
+.history-container {
+    max-height: 600px;
+    overflow-y: auto;
+    margin-top: 15px;
+}
+
+.history-record {
+    background: #ffffff;
+    border: 1px solid #d1d5db;
+    border-radius: 10px;
+    padding: 18px;
+    margin-bottom: 25px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+    transition: all 0.3s ease;
+}
+
+.history-record:hover {
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+    transform: translateY(-2px);
+}
+
+.history-record-header {
+    margin-bottom: 15px;
+    padding-bottom: 12px;
+    border-bottom: 2px solid #f0f2f5;
+}
+
+.history-record-header h4 {
+    margin: 0;
+    color: #4a5a75;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.history-dashboard {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.dashboard-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 12px;
+}
+
+.dashboard-card {
+    background: #fafbfc;
+    border: 1px solid #d1d5db;
+    border-radius: 10px;
+    padding: 12px;
+    border-left: 4px solid #4a5a75;
+    transition: all 0.2s ease;
+    min-height: 65px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.dashboard-card:hover {
+    background: #f8f9fa;
+    transform: translateY(-1px);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.dashboard-card.full-width {
+    grid-column: 1 / -1;
+    min-height: 80px;
+}
+
+.card-label {
+    font-size: 10px;
+    font-weight: 700;
+    color: #6c757d;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    margin-bottom: 6px;
+    line-height: 1;
+}
+
+.card-value {
+    font-size: 14px;
+    color: #2c3e50;
+    font-weight: 500;
+    line-height: 1.3;
+    word-wrap: break-word;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .dashboard-row {
+        grid-template-columns: 1fr;
+    }
+
+    .history-record {
+        padding: 14px;
+        margin-bottom: 20px;
+    }
+
+    .dashboard-card {
+        padding: 10px;
+        min-height: 60px;
+    }
+
+    .card-value {
+        font-size: 13px;
+    }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+    .dashboard-row {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (min-width: 1025px) {
+    .dashboard-row {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .dashboard-row:has(.full-width) {
+        grid-template-columns: 1fr;
+    }
+}
+
+#historialEmpty {
+    text-align: center;
+    color: #666;
+    font-style: italic;
+    margin-top: 20px;
+    display: none;
+}
+
+#historialPacienteLabel {
+    font-weight: bold;
+    color: #4a5a75;
+    margin-bottom: 10px;
+}
